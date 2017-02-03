@@ -1,7 +1,7 @@
-import pytz
-from datetime import datetime
+# import pytz
+# from datetime import datetime
 from stream_framework.activity import Activity
-from flask_restful import Resource
+from flask_restful import Resource, reqparse
 from ..feed_managers import manager
 from ..verbs import FollowVerb
 
@@ -10,14 +10,18 @@ class ActivityAPI(Resource):
         return {'id': id}
 
 class ActivityListAPI(Resource):
+    def __init__(self):
+        self.reqparse = reqparse.RequestParser()
+        self.reqparse.add_argument('actor', type=int, required=True, location='json')
+        # self.reqparse.add_argument('verb', type=str, required=True, location='json')
+        self.reqparse.add_argument('object', type=int, required=True, location='json')
+        self.reqparse.add_argument('target', type=int, required=True, location='json')
+        super(ActivityListAPI, self).__init__()
+
     def post(self):
-        activity = Activity(
-            1234, # 'user_1234',
-            FollowVerb,
-            1234, #'act_1234',
-            1234 #'influencer_1234'
-            # time=datetime.utcnow()
-            # extra_context=dict(item_id=self.item_id)
-        )
-        manager.add_user_activity(1234, activity)
-        return {'message': 'Awesome!'}
+        args = self.reqparse.parse_args()
+        activity = Activity(args['actor'], FollowVerb, args['object'], args['target'])
+        # time=datetime.utcnow()
+        # extra_context=dict(item_id=self.item_id)
+        manager.add_user_activity(activity.actor_id, activity)
+        return {'message': 'Created'}, 201
