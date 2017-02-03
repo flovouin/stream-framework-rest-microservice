@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+  activity:
+    build: .
+    links:
+      - cassandra
+      - rabbitmq
+    ports:
+      - "1234:5000"
+
+  cassandra:
+    image: cassandra
+
+  rabbitmq:
+    image: rabbitmq

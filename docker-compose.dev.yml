@@ -1,0 +1,7 @@
+version: '2'
+
+services:
+  activity:
+    command: /bin/bash
+    volumes:
+      - .:/usr/src/app
