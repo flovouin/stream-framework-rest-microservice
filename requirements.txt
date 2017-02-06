@@ -1,6 +1,6 @@
 cassandra-driver
 celery==3.1
 redis
-stream-framework[cassandra]
+git+https://github.com/flovouin/Stream-Framework.git@0a558ffa32a969e0378c9dbaad81d25d5f80f6ec
 Flask
 flask-restful

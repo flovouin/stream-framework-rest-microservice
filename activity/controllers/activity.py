@@ -1,5 +1,3 @@
-# import pytz
-# from datetime import datetime
 from stream_framework.activity import Activity
 from flask_restful import Resource, reqparse
 from ..feed_managers import manager
@@ -12,10 +10,10 @@ class ActivityAPI(Resource):
 class ActivityListAPI(Resource):
     def __init__(self):
         self.reqparse = reqparse.RequestParser()
-        self.reqparse.add_argument('actor', type=int, required=True, location='json')
+        self.reqparse.add_argument('actor', type=str, required=True, location='json')
         # self.reqparse.add_argument('verb', type=str, required=True, location='json')
-        self.reqparse.add_argument('object', type=int, required=True, location='json')
-        self.reqparse.add_argument('target', type=int, required=True, location='json')
+        self.reqparse.add_argument('object', type=str, required=True, location='json')
+        self.reqparse.add_argument('target', type=str, required=True, location='json')
         super(ActivityListAPI, self).__init__()
 
     def post(self):
