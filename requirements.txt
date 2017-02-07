@@ -1,6 +1,6 @@
-cassandra-driver
+cassandra-driver==3.7.1
 celery==3.1
-redis
+django==1.10.5
+djangorestframework==3.5.3
 git+https://github.com/flovouin/Stream-Framework.git@0a558ffa32a969e0378c9dbaad81d25d5f80f6ec
-Flask
-flask-restful
+redis==2.10.5

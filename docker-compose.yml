@@ -7,7 +7,7 @@ services:
       - cassandra
       - rabbitmq
     ports:
-      - "1234:5000"
+      - "1234:8000"
 
   cassandra:
     image: cassandra
