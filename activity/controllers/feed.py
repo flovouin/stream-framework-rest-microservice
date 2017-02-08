@@ -3,7 +3,8 @@ from rest_framework.response import Response
 from ..feed_managers import manager
 
 @api_view()
-def get_feed(request, user_id):
+def get_feed(request):
+    user_id = request.user.username
     feed = manager.get_feeds(user_id)['aggregated']
     activities = list(feed[:25])
     response = [{

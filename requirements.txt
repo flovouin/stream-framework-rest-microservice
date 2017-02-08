@@ -1,6 +1,8 @@
 cassandra-driver==3.7.1
 celery==3.1
+cryptography==1.7.2
 django==1.10.5
 djangorestframework==3.5.3
+djangorestframework-jwt==1.9.0
 git+https://github.com/flovouin/Stream-Framework.git@0a558ffa32a969e0378c9dbaad81d25d5f80f6ec
 redis==2.10.5
