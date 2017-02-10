@@ -11,7 +11,7 @@ def get_feed(request):
         'date': agg.updated_at.isoformat(),
         'activities': [{
             'actor': a.actor_id,
-            'verb': a.verb.id,
+            'verb': a.verb.infinitive,
             'object': a.object_id,
             'date': a.time.isoformat()
         } for a in agg.activities]

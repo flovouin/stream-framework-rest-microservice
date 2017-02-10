@@ -2,9 +2,9 @@ from stream_framework.verbs import register
 from stream_framework.verbs.base import Verb
 
 
-class FollowVerb(Verb):
+class ActivityVerb(Verb):
     id = 5
-    infinitive = 'follow'
-    past_tense = 'followed'
+    infinitive = 'verb'
+    past_tense = 'verbed'
 
-register(FollowVerb)
+register(ActivityVerb)

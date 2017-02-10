@@ -5,7 +5,7 @@ from stream_framework.feeds.aggregated_feed.cassandra import CassandraAggregated
 class ActivityFeedAggregator(RecentRankMixin, BaseAggregator):
     def get_group(self, activity):
         verb = activity.verb.id
-        date = activity.time.strftime('%Y-%m-%d-%H-%M')
+        date = activity.time.strftime('%Y-%m-%d-%H')
         group = '%0.3d-%s' % (verb, date)
         return group
 
