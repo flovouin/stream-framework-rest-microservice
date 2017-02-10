@@ -9,8 +9,17 @@ services:
     ports:
       - "1234:8000"
 
+  worker:
+    build: .
+    links:
+      - cassandra
+      - rabbitmq
+    environment:
+      - C_FORCE_ROOT=1
+    command: celery -A activity worker -l info
+
   cassandra:
-    image: cassandra
+    image: cassandra:3.9
 
   rabbitmq:
-    image: rabbitmq
+    image: rabbitmq:3.6.6

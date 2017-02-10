@@ -1,10 +1,5 @@
 #!/usr/bin/env python
 
-from celery import current_app
-current_app.conf.CELERY_ALWAYS_EAGER = True
-current_app.conf.CELERY_EAGER_PROPAGATES_EXCEPTIONS = True
-current_app.conf.broker_url = 'pyamqp://rabbitmq'
-
 import os
 import sys
 

@@ -5,3 +5,8 @@ services:
     command: /bin/bash
     volumes:
       - .:/usr/src/app
+
+  worker:
+    command: /bin/bash
+    volumes:
+      - .:/usr/src/app

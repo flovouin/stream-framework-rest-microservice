@@ -15,6 +15,11 @@ CASSANDRA_DRIVER_KWARGS = {
     'protocol_version': 3
 }
 
+CELERY_BROKER_URL = 'pyamqp://rabbitmq'
+CELERY_TASK_SERIALIZER = 'pickle'
+CELERY_RESULT_SERIALIZER = 'pickle'
+CELERY_ACCEPT_CONTENT = {'pickle'}
+
 # Application definition
 
 INSTALLED_APPS = [
