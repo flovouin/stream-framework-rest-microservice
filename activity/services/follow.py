@@ -1,3 +1,8 @@
+'''
+In-memory follow service mock.
+Each user is represented by its set of followers. Users are stored in a dictionary.
+'''
+
 _followers = {}
 
 def follow(follower_id, followee_id):

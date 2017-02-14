@@ -8,7 +8,7 @@ SECRET_KEY = 'us%!@&39o250e79)l!4*0ac4oquo+^nm83vp#y%mw9i$7)i&fy'
 DEBUG = True
 ALLOWED_HOSTS = ['*']
 
-# Stream-framework related
+# Stream-Framework related
 
 STREAM_CASSANDRA_HOSTS = ['cassandra']
 CASSANDRA_DRIVER_KWARGS = {
@@ -16,6 +16,7 @@ CASSANDRA_DRIVER_KWARGS = {
 }
 
 CELERY_BROKER_URL = 'pyamqp://rabbitmq'
+# Pickle is currently needed because the whole Manager object is passed to the workers.
 CELERY_TASK_SERIALIZER = 'pickle'
 CELERY_RESULT_SERIALIZER = 'pickle'
 CELERY_ACCEPT_CONTENT = {'pickle'}
@@ -39,6 +40,8 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10
 }
 
+# This is obviously not production ready. The matching private key is located in the etc folder to
+# simply allow you to generate JWT for the example.
 JWT_AUTH = {
     'JWT_PUBLIC_KEY': '''-----BEGIN PUBLIC KEY-----
 MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA3bU3bOIJpaD8SjNEzZ5a
@@ -51,10 +54,10 @@ lQIDAQAB
 -----END PUBLIC KEY-----
 ''',
     'JWT_ALGORITHM': 'RS256'
-    # 'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=300),
-    # 'JWT_AUDIENCE': None,
-    # 'JWT_ISSUER': None,
 }
+# 'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=300),
+# 'JWT_AUDIENCE': None,
+# 'JWT_ISSUER': None,
 
 MIDDLEWARE = ['django.middleware.common.CommonMiddleware']
 
@@ -63,7 +66,6 @@ ROOT_URLCONF = 'activity.urls'
 WSGI_APPLICATION = 'activity.wsgi.application'
 
 # Internationalization
-# https://docs.djangoproject.com/en/1.10/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
